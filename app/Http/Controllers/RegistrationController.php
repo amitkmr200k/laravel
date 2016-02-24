@@ -46,11 +46,6 @@ class RegistrationController extends Controller
 
         $save_data = new users;
 
-
-           $save_data  = $request->input('first_name');
-                 $save_data = $request->input('middle_name');
-           print_r ($save_data);
-           exit; 
         $save_data->first_name = $request->input('first_name');
         $save_data->middle_name = $request->input('middle_name');
         $save_data->last_name = $request->input('last_name');
@@ -92,7 +87,7 @@ class RegistrationController extends Controller
             $save_data->image = '';
         }
         
-        $save_data->save();
+        //$save_data->save();
         $msg = ['registered'=> 1];
 
        return response()->view('activate',$msg);

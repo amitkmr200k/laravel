@@ -10,9 +10,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('registration', 'RegistrationController@validation');
 
-    //Route::get('activate','ActivationController@is_not_registered');    
+    Route::get('activate','ActivationController@is_not_registered');    
 
-    // Route::get('activate','ActivationController@is_registered');    
+    // Route::get('activate','ActivationController@is_registered');
 
 
     Route::get('test', function () {
