@@ -11,8 +11,8 @@ class ActivationController extends Controller
 {
     public function is_not_registered()
     {
-    	$not_registered = 1;
-        return response()->view('registration',$not_registered);
+    	$msg['not_registered'] = 1;
+        return response()->view('registration',$msg);
     }
 
 }

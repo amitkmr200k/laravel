@@ -1,3 +1,10 @@
+body {
+            font-family: 'lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
 
 .registration
 {

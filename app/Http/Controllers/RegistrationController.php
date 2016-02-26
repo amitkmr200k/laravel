@@ -51,7 +51,7 @@ class RegistrationController extends Controller
         $save_data->last_name = $request->input('last_name');
         $save_data->user_name = $request->input('user_name');
         $save_data->password = $request->input('password');
-        $save_data->email_id = $request->input('email_id');
+        $save_data->email = $request->input('email_id');
         $save_data->age = $request->input('age');
         $save_data->dob = $request->input('dob');
         $save_data->gender = $request->input('gender');
