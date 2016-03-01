@@ -1,6 +1,8 @@
 $(document).ready(function () {
+
+
     $('#grid').jqGrid({
-        url: 'admin_display_data.php',
+        url: 'admin_all_user_info',
         datatype: 'json',
         multiselect: true,
         mtype: 'POST',
@@ -11,23 +13,23 @@ $(document).ready(function () {
         'residence_pincode','residence_contact_no','residence_fax_no','Tweets'
         ],
         colModel: [
-        { name: 'id',width: 30,editable: true},
-        { name: 'user_name',width: 60,editable: true},
-        { name: 'first_name',width: 60,editable: true},
-        { name: 'middle_name',width: 60,editable: true},
-        { name: 'last_name',width: 60,editable: true},
-        { name: 'age',width: 60,editable: true},
-        { name: 'gender',width: 60,editable: true},
-        { name: 'dob',width: 60,editable: true},
-        { name: 'marital_status',width: 60,editable: true},
-        { name: 'employment',width: 60,editable: true},
-        { name: 'employer',width: 60,editable: true},
-        { name: 'residence_street',width: 60,editable: true},
-        { name: 'residence_city',width: 60,editable: true},
-        { name: 'residence_state',width: 60,editable: true},
-        { name: 'residence_pincode',width: 60,editable: true},
-        { name: 'residence_contact_no',width: 60,editable: true},
-        { name: 'residence_fax_no',width: 60,editable: true},
+        { name: 'id',width: 30,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'user_name',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'first_name',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'middle_name',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'last_name',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'age',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'gender',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'dob',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'marital_status',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'employment',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'employer',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_street',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_city',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_state',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_pincode',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_contact_no',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
+        { name: 'residence_fax_no',width: 60,editable: true, searchoptions:{sopt:['eq','ne']}},
         { name: 'act',index: 'act', width: 60,sortable: false}
         ],
         pager: '#perpage',
@@ -53,9 +55,10 @@ $(document).ready(function () {
             $('#grid').navGrid('#perpage', { edit: true, add: false, del: true,
                 search: true, refresh: true, view: false, position: 'left', cloneToTop: true });
         },
-        editurl: 'admin_update_data.php'
+        editurl: 'update_user_info'
     });
 });
+
 
 function modal()
 {
@@ -65,10 +68,10 @@ function modal()
         {
             var ret   = $('#grid').jqGrid('getRowData',id);
             user_name = ret.user_name;
-
+            $('#loading_message').show();
             $.ajax({
                 method: 'POST',
-                url: 'twitter.php',
+                url: 'twitter',
                 dataType: 'json',
                 data: 
                 {
@@ -76,8 +79,9 @@ function modal()
                 },
                 success: function ( msg )
                 {
-                    $('#modal_content').html(msg.tweet);
+                    $('#modal_content').html(msg.display_tweets);
                     $('#myModal').modal('show');
+                    $('#loading_message').hide();
                 },
                 error: function ()
                 {
@@ -85,6 +89,7 @@ function modal()
                 }
 
             });
+
         }
         else
         {

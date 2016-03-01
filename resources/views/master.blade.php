@@ -7,6 +7,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/jqgrid_theme/theme.css' />
     <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
     <!-- jqgrid theme end -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta charset="utf-8">
@@ -53,6 +54,9 @@
                 <ul class="nav navbar-nav navbar-left">
                    <li><a href="{{ url('/home') }}">Home</a></li>
                    <li><a href="{{ url('/edit_profile') }}">Edit profile</a></li>
+                   <li><a href="{{ url('/admin_all_user_info') }}">User Information</a></li>
+                    <li><a href="{{ url('/admin_assign_role') }}">Assign Roles</a></li>
+
                </ul>
                <ul class="nav navbar-nav navbar-right"> 
                 <li class="dropdown">
@@ -96,6 +100,14 @@
     })
 </script>
 
+<script type="text/javascript">
+        $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+
 <!-- jq grid -->
 <script src="js/grid.locale-en.js" type="text/javascript"></script>   
 <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
@@ -104,9 +116,13 @@
 <!-- -->
 <script type="text/javascript" src="js/image_preview.js"></script>
 <script type="text/javascript" src="js/edit_profile_validation.js?version=126"></script>
-<!--     // <script type="text/javascript" src="js/registration_validation_jquery.js"></script> -->
+<script type="text/javascript" src="js/registration_validation_jquery.js"></script>
 <script type="text/javascript" src="js/login_validation_jquery.js?version=1231"></script>  
 <script type="text/javascript" src="js/same_permanent.js?version=123"></script>
 <script type="text/javascript" src="js/date.js?version=13"></script>
+
+<script type="text/javascript" src="js/test.js?version=13"></script>
+
+<script type="text/javascript" src="js/admin_assign_role.js?version=132"></script>
 </body>
 </html>

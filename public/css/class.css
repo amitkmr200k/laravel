@@ -6,6 +6,17 @@ body {
             margin-right: 6px;
         }
 
+    
+.loading_page {
+position: fixed;
+left: 0px;
+top: 0px;
+width: 100%;
+height: 100%;
+z-index: 10000;
+background: url('../img/loading.gif') no-repeat center center;
+display:none;
+}
 .registration
 {
     margin-top: 2%;
@@ -18,6 +29,8 @@ body {
     margin-left: 90px;
     margin-right: 90px;
 }
+
+
 
 .form-control
 {
@@ -39,6 +52,13 @@ body {
 {
     padding: 20px;
     margin-left: 10%;
+}
+
+.admin_user_info
+{
+    background-color: #CAE1FF;
+    margin-right: 4%;
+    
 }
 .reset_form
 {
@@ -125,4 +145,21 @@ body {
 .tweet_user
 {
     margin-left: 20px;
+}
+
+.admin_assign_role
+{
+    margin-top: 2%;
+    background-color: lightblue;
+    padding: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.page_error
+{   
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
 }
