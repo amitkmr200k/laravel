@@ -4,7 +4,7 @@
     <title>@yield('title')</title>
 
     <!-- jqgrid theme start-->
-    <link rel='stylesheet' type='text/css' media='screen' href='/css/jqgrid_theme/theme.css' />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/jqgrid_theme/theme.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/ui.jqgrid.css" />
     <!-- jqgrid theme end -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -20,7 +20,7 @@
     
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
-    <link rel="stylesheet" type='text/css' href="/css/class.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/class.css"> 
     <link rel="stylesheet" href="/css/info.css">
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">

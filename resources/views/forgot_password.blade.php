@@ -7,7 +7,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Send Reset Password Link
-                <br/><span class="display_message">{{session_value('message')}}</span>
+                <br/><span class="display_message">{{session_value('message') }}</span>
                 </div>
                 <div class="panel-body">
                     @if (session('status'))

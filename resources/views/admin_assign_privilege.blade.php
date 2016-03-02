@@ -8,8 +8,8 @@
 <h1>Assign Privileges</h1>
 </div>
 <div class="well registration">
-<form class='form_admin_privilege'>
-    <label class='privilege_display'>Role&nbsp;&nbsp;</label>
+<form class="form_admin_privilege">
+    <label class="privilege_display">Role&nbsp;&nbsp;</label>
  <select id="role" name="role">
             <option selected="true" value="Select Role" disabled>Select role</option>
             @foreach ($roles_table as $role)
@@ -36,11 +36,11 @@
         <br/> </tr>
         @endforeach
         </tr>
-        <div id='reload'>
-        <input id='privilege_data_hidden' type='hidden' value="{{ $manage_privileges_table }}">
+        <div id="reload">
+        <input id="privilege_data_hidden" type="hidden" value="{{ $manage_privileges_table }}">
     </div>
     </table>
-    <br/><input id='set_privilege' class="btn btn-primary" type='button' value='Update'>
+    <br/><input id="set_privilege" class="btn btn-primary" type="button" value="Update">
     <label id="assigned"></label>
 </form>
 </div>

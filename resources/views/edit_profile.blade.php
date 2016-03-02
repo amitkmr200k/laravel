@@ -50,20 +50,6 @@
             <div class="col-xs-4"><p id="lname" class="error"></p></div>
         </div>
         <div class="row">
-            <div class="col-sm-4"><b>User name </b><br/>
-            <input class="form-control" id="user_name" type="text" value="{{ display_value(old('user_name'), $user_name) }}" name="user_name" placeholder="User Name">
-            </div>
-            <div class="col-sm-4"><b>Password</b> <br/>
-            <input class="form-control" id="password" type="password" value="" name="password" placeholder="password">
-            </div>
-            <div class="col-sm-4"><b>Confirm Password </b><br/>
-            <input class="form-control" id="retype_password" type="password" value="" name="password_confirmation" placeholder="password">
-            </div>
-            <div class="col-xs-4"><p id="uname" class="error"></div>
-            <div class="col-xs-4"><p id="pass" class="error"></p></div>
-            <div class="col-xs-4"><p id="retype_pass" class="error"></p></div>  
-        </div>
-        <div class="row">
             <div class="col-sm-4"><b>email id </b><br/>
             <input class="form-control" id="email_id" type="text" value="{{ display_value(old('email_id'), $email) }}" name="email_id" placeholder="abc@gmail.com">
             </div>
@@ -88,8 +74,8 @@
             </div>
              <div class="col-sm-4"><b>Employed</b> <br/>
                 <select id ="employment" name="employment" class="btn btn-primary btn-sm">
-                    <option value="yes" {{ $employment['yes']}}>yes</option>
-                    <option value="no" {{ $employment['no']}}>no</option>
+                    <option value="yes" {{ $employment['yes'] }}>yes</option>
+                    <option value="no" {{ $employment['no'] }}>no</option>
                 </select>
                 </div>
             <div class="col-sm-4"></div>
