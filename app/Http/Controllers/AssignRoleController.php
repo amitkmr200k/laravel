@@ -20,14 +20,13 @@ class AssignRoleController extends Controller
 
     public function update_roles(Request $request)
     {
-		
-		
-		    $user_id   = get_id($request->input('user'), 'user_name_');
-		    $role_id   = get_id($request->input('role'), 'role_');
-		    $save_data = users::find($user_id);
-		   	$save_data->role_id = $role_id;
-		    $save_data->save();
-		    $message = ['success'=>'true'];
+	    $user_id   = get_id($request->input('user'), 'user_name_');
+	    $role_id   = get_id($request->input('role'), 'role_');
+	    $save_data = users::find($user_id);
+	   	$save_data->role_id = $role_id;
+	    $save_data->save();
+	    $message = ['success'=>'true'];
+	
 		return response()->json($message);
     }
 }

@@ -20,9 +20,15 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('twitter', 'TwitterController@tweets');
 
         Route::get('admin_assign_role', 'AssignRoleController@view_page');
-        
         Route::post('admin_assign_role', 'AssignRoleController@update_roles');
-        
 
+        Route::get('admin_assign_privilege', 'AdminAssignPrivilegeController@view_page');
+        Route::post('admin_assign_privilege', 'AdminAssignPrivilegeController@assign_privilege');
+        
+    
     });
+
+        // Route::get('forgot_password', 'ForgotPasswordController@view_page');
+        // Route::post('forgot_password', 'ForgotPasswordController@send_reset_link');
+
 });

@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
     $('#role').click(function(){
-
+         $('#assigned').text('');
+           $('#display_message').text('');
         $(':checkbox').prop('checked', false);
         // id of selected role
         var id = $(':selected').attr('id');
@@ -31,27 +32,36 @@ $(document).ready(function(){
             return $(this).attr('id');
         }).get();
 
-        $.ajax
-        ({
-            method: 'POST',
-            url: 'admin_update_privilege.php',
-            dataType: 'json',
-            data: 
-            { 
-                role_id: role_id,
-                id: checkbox_ids 
-            },
-            success: function( msg ) 
-            {
-              console.log('pass');
-              //reloading a section of the page
-              $('#reload').load("admin_privilege.php #privilege_data_hidden");
-          },
-          error: function()
-          {
-             console.log('fail');
-         }
-     });   
-
+        //console.log(checkbox_ids);
+         if('undefined' === typeof(role_id))
+        {
+            $('#display_message').text('Role not selected').css('color','red');
+        }
+        else
+        {    
+            $.ajax
+            ({
+                method: 'POST',
+                url: 'admin_assign_privilege',
+                dataType: 'json',
+                data: 
+                { 
+                    role_id: role_id,
+                    id: checkbox_ids
+                },
+                success: function( msg )
+                {
+                  console.log('pass');
+                  if('true' === msg.success)
+                    $('#assigned').text('Privileges successfully assigned').css('color','red');
+                  //reloading a section of the page
+                  $('#reload').load("admin_assign_privilege #privilege_data_hidden");
+                },
+                error: function()
+                {
+                    console.log('fail');
+                }
+            });   
+        }
     });
 });

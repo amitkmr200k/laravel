@@ -43,34 +43,34 @@ $(document).ready(function()
         }
         else
         {
-        $.ajax
-        ({
-            method: 'POST',
-            url: 'admin_assign_role',
-            dataType: 'json',
-            data:
-            {
-                user: user_name_selected,
-                role: role_selected
-            },
-            success: function ( msg )
-            {
-                console.log('pass');
-                // Reloading a section of the page.
-                $('#reload_hidden_user_info').load("admin_assign_role #hidden_user_info");
-
-                if ('true' === msg.success)
+            $.ajax
+            ({
+                method: 'POST',
+                url: 'admin_assign_role',
+                dataType: 'json',
+                data:
                 {
-                    $('#display_message').text('New Role assigned !!!').css('color','red');
-                    $('#role option[id="' + role_selected + '"]').attr('selected', true);
+                    user: user_name_selected,
+                    role: role_selected
+                },
+                success: function ( msg )
+                {
+                    console.log('pass');
+                    // Reloading a section of the page.
+                    $('#reload_hidden_user_info').load("admin_assign_role #hidden_user_info");
+
+                    if ('true' === msg.success)
+                    {
+                        $('#display_message').text('New Role assigned !!!').css('color','red');
+                        $('#role option[id="' + role_selected + '"]').attr('selected', true);
+                    }
+                     
+                },
+                error: function()
+                {
+                    console.log('fail');
                 }
-                 
-            },
-            error: function()
-            {
-                console.log('fail');
-            }
-        });
+            });
         }
     });
 });

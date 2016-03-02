@@ -54,5 +54,8 @@
     value="{{$all}}">
 </div>
 </div>
+@stop
 
+@section('script')
+<script type="text/javascript" src="js/admin_assign_role.js?version=132"></script>
 @stop

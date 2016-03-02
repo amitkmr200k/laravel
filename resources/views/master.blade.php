@@ -4,8 +4,8 @@
     <title>@yield('title')</title>
 
     <!-- jqgrid theme start-->
-    <link rel='stylesheet' type='text/css' media='screen' href='css/jqgrid_theme/theme.css' />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/jqgrid_theme/theme.css' />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/ui.jqgrid.css" />
     <!-- jqgrid theme end -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta charset="utf-8">
@@ -15,13 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
-    <link rel="stylesheet" type='text/css' href="css/class.css"> 
-    <link rel="stylesheet" href="css/info.css">
+    <link href="/css/business-casual.css" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="/css/class.css"> 
+    <link rel="stylesheet" href="/css/info.css">
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
@@ -54,9 +54,16 @@
                 <ul class="nav navbar-nav navbar-left">
                    <li><a href="{{ url('/home') }}">Home</a></li>
                    <li><a href="{{ url('/edit_profile') }}">Edit profile</a></li>
-                   <li><a href="{{ url('/admin_all_user_info') }}">User Information</a></li>
+                     <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                       Admin <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('/admin_all_user_info') }}">User Information</a></li>
                     <li><a href="{{ url('/admin_assign_role') }}">Assign Roles</a></li>
-
+                     <li><a href="{{ url('/admin_assign_privilege') }}">Assign privilege</a></li>
+                    </ul>
+                </li>
                </ul>
                <ul class="nav navbar-nav navbar-right"> 
                 <li class="dropdown">
@@ -112,17 +119,13 @@
 <script src="js/grid.locale-en.js" type="text/javascript"></script>   
 <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
 <script src="js/admin_section_jqgrid.js?version=2311" type="text/javascript"></script>
-
 <!-- -->
 <script type="text/javascript" src="js/image_preview.js"></script>
 <script type="text/javascript" src="js/edit_profile_validation.js?version=126"></script>
-<script type="text/javascript" src="js/registration_validation_jquery.js"></script>
-<script type="text/javascript" src="js/login_validation_jquery.js?version=1231"></script>  
+<!-- <script type="text/javascript" src="js/registration_validation_jquery.js"></script> -->
 <script type="text/javascript" src="js/same_permanent.js?version=123"></script>
 <script type="text/javascript" src="js/date.js?version=13"></script>
-
 <script type="text/javascript" src="js/test.js?version=13"></script>
-
-<script type="text/javascript" src="js/admin_assign_role.js?version=132"></script>
+@yield('script')
 </body>
 </html>
