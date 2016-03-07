@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
 use App\Model\users;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -39,9 +38,16 @@ class AdminUserInfoController extends Controller
                 case 'ne':
                     $condition = '!=';
                     break;
+
+                default:
+                    $condition = '=';
+                    break;
             }
 
-            $query = DB::table('users')->where($search_field, $condition, $search_string)->get();
+            $query = users::
+                     where($search_field, $condition, $search_string)
+                     ->get();
+
             return response()->json($query);
         }
         else
@@ -70,40 +76,33 @@ class AdminUserInfoController extends Controller
                 $i++;
             }
 
-            if (1 === $i)
-            {
-                $delete_id = users::find($id[0]);
-                $delete_id->delete();
-            }
-            else
-            {
-                $count = 0;
+            $count = 0;
 
-                while ($count < $i)
-                {
-                    $delete_id = users::find($id[$count]);
-                    $delete_id->delete();
-                    $count++;
-                }
+            while ($count < $i)
+            {
+                $delete_id = users::find($id[$count]);
+                $delete_id->delete();
+                $count++;
             }
         }
         else if ('edit' === $update_type)
         {
-            $save_data                    = users::find($request->input('id'));
-            $save_data->first_name        = $request->input('first_name');
-            $save_data->middle_name       = $request->input('middle_name');
-            $save_data->last_name         = $request->input('last_name');
-            $save_data->user_name         = $request->input('user_name');
-            $save_data->age               = $request->input('age');
-            $save_data->dob               = $request->input('dob');
-            $save_data->gender            = $request->input('gender');
-            $save_data->marital_status    = $request->input('marital_status');
-            $save_data->employment        = $request->input('employment');
-            $save_data->employer          = $request->input('employer');
-            $save_data->residence_street  = $request->input('residence_street');
-            $save_data->residence_city    = $request->input('residence_city');
-            $save_data->residence_state   = $request->input('residence_state');
-            $save_data->residence_pincode = $request->input('residence_pincode');
+            $save_data = users::find($request->input('id'));
+
+            $save_data->first_name           = $request->input('first_name');
+            $save_data->middle_name          = $request->input('middle_name');
+            $save_data->last_name            = $request->input('last_name');
+            $save_data->user_name            = $request->input('user_name');
+            $save_data->age                  = $request->input('age');
+            $save_data->dob                  = $request->input('dob');
+            $save_data->gender               = $request->input('gender');
+            $save_data->marital_status       = $request->input('marital_status');
+            $save_data->employment           = $request->input('employment');
+            $save_data->employer             = $request->input('employer');
+            $save_data->residence_street     = $request->input('residence_street');
+            $save_data->residence_city       = $request->input('residence_city');
+            $save_data->residence_state      = $request->input('residence_state');
+            $save_data->residence_pincode    = $request->input('residence_pincode');
             $save_data->residence_contact_no = $request->input('residence_contact_no');
             $save_data->residence_fax_no     = $request->input('residence_fax_no');
 

@@ -54,7 +54,19 @@
                 <ul class="nav navbar-nav navbar-left">
                    <li><a href="{{ url('/home') }}">Home</a></li>
                    <li><a href="{{ url('/edit_profile') }}">Edit profile</a></li>
-                     <li class="dropdown">
+
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                       Department <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url('/notification') }}">Notification</a></li>
+                    <li><a href="{{ url('/assignment') }}">Assignemnt</a></li>
+                    </ul>
+                </li>
+                   
+                    @if (Auth::user()->is_admin)
+                    <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                        Admin <span class="caret"></span>
                     </a>
@@ -64,6 +76,7 @@
                      <li><a href="{{ url('/admin_assign_privilege') }}">Assign privilege</a></li>
                     </ul>
                 </li>
+                @endif  
                </ul>
                <ul class="nav navbar-nav navbar-right"> 
                 <li class="dropdown">
@@ -121,8 +134,6 @@
 <script src="js/admin_section_jqgrid.js?version=2311" type="text/javascript"></script>
 <!-- -->
 <script type="text/javascript" src="js/image_preview.js"></script>
-<script type="text/javascript" src="js/edit_profile_validation.js?version=126"></script>
-<!-- <script type="text/javascript" src="js/registration_validation_jquery.js"></script> -->
 <script type="text/javascript" src="js/same_permanent.js?version=123"></script>
 <script type="text/javascript" src="js/date.js?version=13"></script>
 <script type="text/javascript" src="js/test.js?version=13"></script>

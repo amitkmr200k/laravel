@@ -22,7 +22,15 @@ class AdminAssignPrivilegeController extends Controller
         $action           = Action::all();
         $manage_privilege = ManagePrivilege::all();
 
-        return view('admin_assign_privilege', ['roles_table' => $role, 'resources_table' => $resource, 'actions_table' => $action, 'manage_privileges_table' => $manage_privilege]);
+        return view(
+            'admin_assign_privilege',
+            [
+             'roles_table'             => $role,
+             'resources_table'         => $resource,
+             'actions_table'           => $action,
+             'manage_privileges_table' => $manage_privilege,
+            ]
+        );
 
     }//end view_page()
 
@@ -44,11 +52,17 @@ class AdminAssignPrivilegeController extends Controller
                 $resource_action['ids'] = $value;
                 $length                 = strlen($resource_action['ids']);
                 $find_action            = strpos($resource_action['ids'], 'action');
-                // substr(string,starting position,length of substing to be extracted)
+                // Description -- substr(string,starting position,length of substing to be extracted).
                 $resource_id = (int) substr($resource_action['ids'], 8, ($find_action - 8));
                 $action_id   = (int) substr($resource_action['ids'], ($find_action + 6), ($length - $find_action - 6));
 
-                DB::table('manage_privileges')->insert(['role_id' => $role_id, 'resource_id' => $resource_id, 'action_id' => $action_id ]);
+                DB::table('manage_privileges')->insert(
+                    [
+                     'role_id'     => $role_id,
+                     'resource_id' => $resource_id,
+                     'action_id'   => $action_id,
+                    ]
+                );
             }
         }
 

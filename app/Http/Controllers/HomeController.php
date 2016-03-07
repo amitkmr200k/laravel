@@ -8,6 +8,8 @@ use Auth;
 
 class HomeController extends Controller
 {
+
+
     /**
      * Create a new controller instance.
      *
@@ -16,7 +18,9 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
+
+    }//end __construct()
+
 
     /**
      * Show the application dashboard.
@@ -25,11 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
         $user = Auth::user();
-
-        //return view('home');
         return response()->view('home', $user);
-    }
 
-}
+    }//end index()
+
+
+}//end class

@@ -10,13 +10,13 @@ $(document).ready(function(){
         }
     });
 //checking for unique email id 		
-$("#email_id_ed").blur(function()
+$("#email_id").blur(function()
 {
-		var email_id  = $.trim($('#email_id_ed').val());		
+		var email_id  = $.trim($('#email_id').val());		
 		$.ajax
 		({
 			method: "POST",
-			url: "email_validation_edit.php",
+			url: "check_email",
 			dataType: 'json',
 			data: 
 			{ 
@@ -40,7 +40,7 @@ $("#edit").click(function(){
 var first_name  = $.trim($("#first_name").val());
 var middle_name = $.trim($('#middle_name').val());
 var last_name = $.trim($('#last_name').val());
-var email_id   =  $.trim($('#email_id_ed').val());
+var email_id   =  $.trim($('#email_id').val());
 var age =  $.trim($('#age').val());
 var employment =  $.trim($('#employment').val());
 var employer =  $.trim($('#employer').val());

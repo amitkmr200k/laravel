@@ -8,34 +8,41 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"><b>{{ $first_name }}'s Profile</b></div>
-               
                 <div class="panel-body">
             <div class="table-responsive">
-                <!-- Details of the user -->            
-                <table class="well table table-bordered">
-                    <tbody> 
-                    
-                    <img width = "150px" height="150px" align="left" src="img/{{ $image }}">
-                   <!--  <p>Name : {{$first_name}} {{$middle_name}} {{$last_name}}</p> -->
+            <table class="well table table-bordered">
+                    <tbody>
+                    <tr> 
+                        <td class="info" width="50">
+                        <img width = "150px" height="150px" align="left" src="img/{{ $image }}"> 
+                        </td>
+                        
+                        <td class="info">
+                        <table class="well table table-bordered">
+                         <tbody>
                         <tr>
+                        <td class="info">Name</td>
+                        <td class="info">{{ $first_name }} {{ $middle_name }} {{ $last_name }}</td>
+                         </tr>
+                           <tr>
                             <td class="info">User Name</td>
-                            <td> {{ $user_name }}</td>
-                        </tr>
-                         <tr>
-                            <td class="info">First Name</td>
-                            <td> {{ $first_name }}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">Middle Name</td>
-                            <td> {{ $middle_name }}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">Last Name</td>
-                            <td> {{ $last_name }}</td>
+                            <td class="info"> {{ $user_name }}</td>
                         </tr>
                         <tr>
                             <td class="info">Email ID</td>
-                            <td> {{ $email }}</td>
+                            <td class="info"> {{ $email }}</td>
+                        </tr>
+                        </tbody>
+                         </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                <!-- Details of the user -->            
+                <table class="well table table-bordered">
+                    <tbody>
+                   <tr>
+                    <th colspan="2">Other Details</th>
                         </tr>
                         <tr>
                             <td class="info">Gender</td>
