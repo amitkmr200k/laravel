@@ -23,7 +23,8 @@ class EditProfileController extends Controller
 
     public function save_edit_profile(Request $request)
     {
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
              'first_name'           => 'required|alpha',
              'middle_name'          => 'regex:/^[a-zA-Z. ]*$/',
@@ -46,7 +47,8 @@ class EditProfileController extends Controller
              'permanent_contact_no' => 'required|digits:10',
              'permanent_fax_no'     => 'digits:10',
              'image'                => 'image',
-            ]);
+            ]
+        );
 
         $save_data = Users::find(Auth::user()->id);
 
@@ -80,17 +82,45 @@ class EditProfileController extends Controller
         {
             $image_temp_name = $request->file('image')->getPathname();
             $image_name      = $request->file('image')->getClientOriginalName();
-            $path            = base_path()  . '/public/img/';
+            $path            = base_path() . '/public/img/';
             $request->file('image')->move($path, $image_name);
             $save_data->image = $image_name;
         }
 
         $save_data->save();
+
         $msg = ['updated' => 1];
 
         return redirect('edit_profile')->with('message', 'Profile Updated !!!');
 
     }//end save_edit_profile()
+
+
+    public function check_email(Request $request)
+    {
+        $email_to_check = $request->input('email_id');
+        $email_of_auth_user = Auth::user()->email;
+        $email_already_exists = users::where('email',$email_to_check)->count();
+
+        if ($email_of_auth_user !== $email_to_check)
+        {
+            if(1 === $email_already_exists)
+            {
+                $error['email_id'] = "1";   
+            }
+            else
+            {
+                $error['email_id'] = "0";
+            }
+        }
+        else
+        {
+            $error['email_id'] = "0";
+        }
+
+        return response()->json($error);
+
+    }//end check_email()
 
 
 }//end class

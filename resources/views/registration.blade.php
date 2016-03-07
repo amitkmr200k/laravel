@@ -64,7 +64,7 @@
         </div>
         <div class="row">
             <div class="col-sm-4"><b>email id </b><br/>
-                <input class="form-control" id="email_id" type="text" value="" name="email_id" placeholder="abc@gmail.com">
+                <input class="form-control" id="email_id" type="text" value="{{ old('email') }}" name="email_id" placeholder="abc@gmail.com">
             </div>
             <div class="col-sm-4"><b>Age </b><br/>
                 <input class="form-control" id="age" type="text" value="{{ old('age') }}" name="age" placeholder="age" maxlength=3>  </div>
@@ -175,4 +175,7 @@
                                 </form> 
                             </div>
 
-                            @stop
+@stop
+@section('script')
+<!-- <script type="text/javascript" src="js/registration_validation_jquery.js"></script>
+ -->@stop

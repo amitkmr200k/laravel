@@ -1,4 +1,4 @@
 hi <b>{{$name}}</b>,
+{{$code}}
 <br/>
-This is a system generated mail.
-Do not reply
+<a href="mysite.com/activate?{{$code}}">Click Here</a>
