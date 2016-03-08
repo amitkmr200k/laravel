@@ -1,4 +1,3 @@
-hi <b>{{$name}}</b>,
-{{$code}}
+Hi <strong>{{$name}}</strong>,
 <br/>
-<a href="mysite.com/activate?{{$code}}">Click Here</a>
+<a href="mysite.com/activate?{{$code}}">Click here to activate your account</a>

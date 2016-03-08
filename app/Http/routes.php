@@ -4,15 +4,15 @@ Route::group(
     ['middleware' => ['web']],
     function ()
     {
+
         Route::auth();
         Route::get('/home', 'HomeController@index');
-        Route::get('/', 'IsguestController@is_guest');
+        Route::get('/', 'IsguestController@is_guest')->middleware('is_active');
 
         // Does not require login.
         Route::get('registration', 'RegistrationController@view_registration');
         Route::post('registration', 'RegistrationController@save_registration');
         Route::get('activate', 'ActivationController@is_activate');
-
         // Requires login.
         Route::group(
             ['middleware' => ['auth']],

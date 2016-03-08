@@ -4,11 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
-class AdminMiddleware
+class IsActiveMiddleware
 {
-
-
     /**
      * Handle an incoming request.
      *
@@ -18,14 +17,19 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::guest() && Auth::user()->is_admin)
-        {
+         if (Auth::check())
+         {
+             if (Auth::user()->is_active == true)
+            {
             return $next($request);
-        }
+            }
+        
+            Auth::logout();
+            Session::flush();
+            return redirect('login')->with('message', 'not activated');
+         }
 
-        return redirect('/');
+         return $next($request);
 
     }
-
-
 }

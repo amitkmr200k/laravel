@@ -108,14 +108,14 @@ class RegistrationController extends Controller
         Mail::send(
             'test_email',
             [
-             'name' => $request->input('first_name'),
-             'code' => $activation_code,
+             'name'  => $request->input('first_name'),
+             'code'  => $activation_code,
             ],
             function ($message)
             {
-                $message->to('amitkmr200k@gmail.com', 'adada')
+                $message->to('amitkmr200k@gmail.com')
                         ->from('mfsi.amitkumar@gmail.com')
-                        ->subject('a');
+                        ->subject('Activation Link');
             }
         );
 

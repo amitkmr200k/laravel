@@ -15,6 +15,7 @@ class EditProfileController extends Controller
 
     public function view_edit_profile()
     {
+        
         $user = Auth::user();
         return response()->view('edit_profile', $user);
 

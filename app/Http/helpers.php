@@ -34,7 +34,9 @@
             return Session::get($message);
         }
         else
+        {
             return '';
+        }
     }
 
     function get_id($string,$slice_it)

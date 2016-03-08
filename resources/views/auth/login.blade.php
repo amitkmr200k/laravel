@@ -1,12 +1,24 @@
 @extends('master')
 
 @section('body')
+
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+                @if(session_value('message') == 'invalid' || session_value('message') == 'not activated')
+                        <div class="alert alert-danger" type="hidden"><span class="glyphicon glyphicon-exclamation-sign">{{session_value('message')}}</span>
+                        </div>
+                @elseif(session_value('message') == 'activated')
+                 <div class="alert alert-success" type="hidden">
+                 <span class="glyphicon glyphicon-exclamation-sign">
+                     Congratulations, your account is activated.
+                 </span>
+                        </div>       
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 

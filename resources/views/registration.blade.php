@@ -5,27 +5,27 @@
 @section('body')
 
 @if (count($errors) > 0)
-    <div class="well registration">
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+<div class="well registration">
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
-    {{--*/ $gender = is_selected(old('gender'), 'male', 'female', 'checked') /*--}}
-    {{--*/ $marital_status = is_selected(old('marital_status'), 'married', 'unmarried', 'selected') /*--}}
-    {{--*/ $employment = is_selected(old('employment'), 'yes', 'no', 'selected') /*--}}
+</div>
+{{--*/ $gender = is_selected(old('gender'), 'male', 'female', 'checked') /*--}}
+{{--*/ $marital_status = is_selected(old('marital_status'), 'married', 'unmarried', 'selected') /*--}}
+{{--*/ $employment = is_selected(old('employment'), 'yes', 'no', 'selected') /*--}}
 @else
-    {{--*/ $gender['male'] = 'checked' /*--}}
-    {{--*/ $gender['female'] = '' /*--}}
+{{--*/ $gender['male'] = 'checked' /*--}}
+{{--*/ $gender['female'] = '' /*--}}
 
-    {{--*/ $marital_status['married'] = '' /*--}}
-    {{--*/ $marital_status['unmarried'] = 'selected' /*--}}
+{{--*/ $marital_status['married'] = '' /*--}}
+{{--*/ $marital_status['unmarried'] = 'selected' /*--}}
 
-    {{--*/ $employment['no'] = 'selected' /*--}}
-    {{--*/ $employment['yes'] = '' /*--}}
+{{--*/ $employment['no'] = 'selected' /*--}}
+{{--*/ $employment['yes'] = '' /*--}}
 @endif
 
 <div class="well registration">
@@ -175,7 +175,7 @@
                                 </form> 
                             </div>
 
-@stop
-@section('script')
+                            @stop
+                            @section('script')
 <!-- <script type="text/javascript" src="js/registration_validation_jquery.js"></script>
- -->@stop
+-->@stop
