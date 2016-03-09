@@ -13,10 +13,8 @@
                         <div class="alert alert-danger" type="hidden"><span class="glyphicon glyphicon-exclamation-sign">{{session_value('message')}}</span>
                         </div>
                 @elseif(session_value('message') == 'activated')
-                 <div class="alert alert-success" type="hidden">
-                 <span class="glyphicon glyphicon-exclamation-sign">
+                 <div class="alert alert-success glyphicon glyphicon-exclamation-sign" type="hidden">
                      Congratulations, your account is activated.
-                 </span>
                         </div>       
                     @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">

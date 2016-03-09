@@ -1,7 +1,9 @@
 $(document).ready(function()
 {
+$('#user_info').hide();
     $('#user').click(function ()
     {
+        $('#user_info').slideDown('slow');
         $('#display_message').text('');
          var user_name_selected = $('#user option:selected').attr('name');
         
@@ -17,12 +19,13 @@ $(document).ready(function()
 
             if (user_name_selected === match_user_name)
             {
-                show_detail += 'Name : ' + display[i].first_name + ' '
-                + display[i].middle_name + ' ' + display[i].last_name + '<br/>';
-                show_detail += 'Email ID : ' + display[i].email + '<br/>';
-                $('#user_info').html(show_detail);
-                m = 'role_' + display[i].role_id;
-                $('#role option[id="' + m + '"]').prop('selected', true);
+                show_name = display[i].first_name + ' '
+                + display[i].middle_name + ' ' + display[i].last_name;
+                show_email = display[i].email;
+                $('#name_assign_role_page').val(show_name);
+                $('#email_assign_role_page').val(show_email);
+                role_select = 'role_' + display[i].role_id;
+                $('#role option[id="' + role_select + '"]').prop('selected', true);
             }
 
             i++;

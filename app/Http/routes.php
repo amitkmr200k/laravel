@@ -13,6 +13,15 @@ Route::group(
         Route::get('registration', 'RegistrationController@view_registration');
         Route::post('registration', 'RegistrationController@save_registration');
         Route::get('activate', 'ActivationController@is_activate');
+        Route::post(
+                    'check_email_registration',
+                    'RegistrationController@check_email'
+                );
+         Route::post(
+                    'check_user_name_registration',
+                    'RegistrationController@check_user_name'
+                );
+        
         // Requires login.
         Route::group(
             ['middleware' => ['auth']],

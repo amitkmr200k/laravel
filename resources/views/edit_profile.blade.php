@@ -70,7 +70,7 @@
     <form id="edit_profile_form" action="edit_profile"
     enctype="multipart/form-data" method="POST">
         <div class="row">
-            <div class="col-sm-4"><b>First name</b> <br/>
+            <div class="col-sm-4"><b>First name</b><br/>
                 <input class="form-control" id="first_name" type="text"
                 value="{{ display_value(old('first_name'), $first_name) }}"
                 name="first_name" placeholder="First Name">
@@ -270,8 +270,8 @@
             <div class="col-sm-4"><b>Write something(140 words)</b><br/>
                 <textarea class="form-control" name="comment"
                 placeholder="Comment here in 140 words" rows="4"
-                cols="30">{{ display_value(old('comment'), $comment) }}
-                </textarea>
+                cols="30">{{ display_value(
+                old('comment'), $comment) }}</textarea>
             </div>
             <div class="col-sm-4">
                 <input class="btn btn-primary" id="edit"  type="submit" 
@@ -285,7 +285,7 @@
                 <input type="hidden" value="{{ csrf_token() }}" name="_token">
             </div>
         </div>
-    </form> 
+    </form>
 </div>
 @stop
 

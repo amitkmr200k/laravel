@@ -9,6 +9,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Model\users;
 use Mail;
 use Hash;
+
 class RegistrationController extends Controller
 {
 
@@ -105,7 +106,7 @@ class RegistrationController extends Controller
 
         $msg = ['registered' => 1];
 
-        Mail::send(
+        Mail::queue(
             'test_email',
             [
              'name'  => $request->input('first_name'),
@@ -122,6 +123,46 @@ class RegistrationController extends Controller
         return response()->view('activate', $msg);
 
     }//end save_registration()
+
+
+    public function check_email(Request $request)
+    {
+        $email_to_check = $request->input('email_id');
+        $email_already_exists = users::where('email',$email_to_check)->count();
+
+        if ($email_already_exists)
+        {
+          
+                $error['email_id'] = "1";
+           }
+            else
+            {
+                $error['email_id'] = "0";
+            }
+
+        return response()->json($error);
+
+    }//end check_email()
+
+
+    public function check_user_name(Request $request)
+    {
+        $user_name_to_check = $request->input('user_name');
+        $user_name_already_exists = users::where('user_name',$user_name_to_check)->count();
+
+        if ($user_name_already_exists)
+        {
+          
+                $error['user_name'] = "1";
+           }
+            else
+            {
+                $error['user_name'] = "0";
+            }
+
+        return response()->json($error);
+
+    }//end check_user_name()
 
 
 }//end class

@@ -10,7 +10,7 @@
 <div class="well registration">
     <form class="form_admin_privilege">
     <label class="privilege_display">Role&nbsp;&nbsp;</label>
-    <select id="role" name="role">
+    <select class="form-control" id="role" name="role">
         <option selected="true" value="Select Role"
         disabled>Select role</option>
 
@@ -23,8 +23,9 @@
         @endforeach
     </select>
     <label id="display_message"></label>
+    <div id="show_data">
     <table class="table-responsive">
-
+    <tbody>
         @foreach ($resources_table as $value)
             {{--*/ $val = $value['resource'] /*--}}
             {{--*/ $id  = $value['id'] /*--}}
@@ -51,11 +52,14 @@
             <input id="privilege_data_hidden" type="hidden"
             value="{{ $manage_privileges_table }}">
         </div>
+        </tbody>
     </table>
+    
     <br/>
     <input id="set_privilege" class="btn btn-primary"
     type="button" value="Update">
     <label id="assigned"></label>
+    </div>
     </form>
 </div>
 @stop

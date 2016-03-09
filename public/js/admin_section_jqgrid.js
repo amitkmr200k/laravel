@@ -48,7 +48,8 @@ $(document).ready(function () {
 
             for (var i = 0; i < ids_length; i++)
             {
-                view_tweet = '<input id ="tweet" type="button" onclick="modal()" class="btn btn-primary" data-toggle="modal"  value="View" />';
+                tweet_id ='tweet'+i;
+                view_tweet = '<input id ="'+tweet_id+ '"type="button" onclick="modal(id)" class="btn btn-primary" data-toggle="modal"  value="View" />';
                 $('#grid').jqGrid('setRowData', ids[i], {act: view_tweet});
             }
 
@@ -60,9 +61,11 @@ $(document).ready(function () {
 });
 
 
-function modal()
+function modal(a)
 {
     $(document).ready(function () {
+
+        $('#grid').jqGrid('setSelection', a );
         var id = $('#grid').jqGrid('getGridParam','selrow');
         if (id)
         {
@@ -97,3 +100,5 @@ function modal()
         }//end if
     });
 }//end modal()
+
+

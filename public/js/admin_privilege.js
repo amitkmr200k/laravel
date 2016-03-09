@@ -1,6 +1,8 @@
 $(document).ready(function(){
+    $('#show_data').hide();
 
     $('#role').click(function(){
+         $('#show_data').slideDown('slow');
          $('#assigned').text('');
            $('#display_message').text('');
         $(':checkbox').prop('checked', false);

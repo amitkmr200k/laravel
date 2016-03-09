@@ -14,9 +14,8 @@
                     <tbody>
                     <tr> 
                         <td class="info" width="50">
-                        <img width = "150px" height="150px" align="left" src="img/{{ $image }}"> 
+                        <img width="150" height="150" align="left" src="img/{{ $image }}">
                         </td>
-                        
                         <td class="info">
                         <table class="well table table-bordered">
                          <tbody>
