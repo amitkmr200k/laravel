@@ -38,7 +38,8 @@ class NotificationController extends Controller
             }
         }
 
-           return view('notification')->with('action_allowed', $action_allowed);
+           return view('notification')
+                  ->with('action_allowed', $action_allowed);
 
     }//end view_page()
 

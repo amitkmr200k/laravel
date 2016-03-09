@@ -72,22 +72,28 @@ class RegistrationController extends Controller
         $save_data->residence_street     = $request->input('residence_street');
         $save_data->residence_city       = $request->input('residence_city');
         $save_data->residence_state      = $request->input('residence_state');
-        $save_data->residence_pincode    = $request->input('residence_pincode');
-        $save_data->residence_contact_no = $request->input('residence_contact_no');
+        $save_data->residence_pincode    = $request->
+                                           input('residence_pincode');
+        $save_data->residence_contact_no = $request->
+                                           input('residence_contact_no');
         $save_data->residence_fax_no     = $request->input('residence_fax_no');
         // Permanent Address details.
         $save_data->permanent_street     = $request->input('permanent_street');
         $save_data->permanent_city       = $request->input('permanent_city');
         $save_data->permanent_state      = $request->input('permanent_state');
-        $save_data->permanent_pincode    = $request->input('permanent_pincode');
-        $save_data->permanent_contact_no = $request->input('permanent_contact_no');
+        $save_data->permanent_pincode    = $request->
+                                           input('permanent_pincode');
+        $save_data->permanent_contact_no = $request->
+                                           input('permanent_contact_no');
         $save_data->permanent_fax_no     = $request->input('permanent_fax_no');
         $save_data->comment              = $request->input('comment');
 
         if ($request->file('image'))
         {
             $image_temp_name = $request->file('image')->getPathname();
-            $image_name      = $request->file('image')->getClientOriginalName();
+            $image_name      = $request
+                                ->file('image')
+                                ->getClientOriginalName();
             $path            = base_path() . '/public/img/';
 
             $request->file('image')->move($path, $image_name);
@@ -109,8 +115,8 @@ class RegistrationController extends Controller
         Mail::queue(
             'test_email',
             [
-             'name'  => $request->input('first_name'),
-             'code'  => $activation_code,
+             'name' => $request->input('first_name'),
+             'code' => $activation_code,
             ],
             function ($message)
             {
@@ -127,18 +133,18 @@ class RegistrationController extends Controller
 
     public function check_email(Request $request)
     {
-        $email_to_check = $request->input('email_id');
-        $email_already_exists = users::where('email',$email_to_check)->count();
+        $email_to_check       = $request->input('email_id');
+        $email_already_exists =
+                            users::where('email', $email_to_check)->count();
 
         if ($email_already_exists)
         {
-          
-                $error['email_id'] = "1";
-           }
-            else
-            {
-                $error['email_id'] = "0";
-            }
+            $error['email_id'] = '1';
+        }
+        else
+        {
+            $error['email_id'] = '0';
+        }
 
         return response()->json($error);
 
@@ -147,18 +153,18 @@ class RegistrationController extends Controller
 
     public function check_user_name(Request $request)
     {
-        $user_name_to_check = $request->input('user_name');
-        $user_name_already_exists = users::where('user_name',$user_name_to_check)->count();
+        $user_name_to_check       = $request->input('user_name');
+        $user_name_already_exists =
+                    users::where('user_name', $user_name_to_check)->count();
 
         if ($user_name_already_exists)
         {
-          
-                $error['user_name'] = "1";
-           }
-            else
-            {
-                $error['user_name'] = "0";
-            }
+            $error['user_name'] = '1';
+        }
+        else
+        {
+            $error['user_name'] = '0';
+        }
 
         return response()->json($error);
 

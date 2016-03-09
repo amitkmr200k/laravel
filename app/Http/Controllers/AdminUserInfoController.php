@@ -96,15 +96,22 @@ class AdminUserInfoController extends Controller
             $save_data->age                  = $request->input('age');
             $save_data->dob                  = $request->input('dob');
             $save_data->gender               = $request->input('gender');
-            $save_data->marital_status       = $request->input('marital_status');
+            $save_data->marital_status       = $request->
+                                               input('marital_status');
             $save_data->employment           = $request->input('employment');
             $save_data->employer             = $request->input('employer');
-            $save_data->residence_street     = $request->input('residence_street');
-            $save_data->residence_city       = $request->input('residence_city');
-            $save_data->residence_state      = $request->input('residence_state');
-            $save_data->residence_pincode    = $request->input('residence_pincode');
-            $save_data->residence_contact_no = $request->input('residence_contact_no');
-            $save_data->residence_fax_no     = $request->input('residence_fax_no');
+            $save_data->residence_street     = $request->
+                                               input('residence_street');
+            $save_data->residence_city       = $request->
+                                               input('residence_city');
+            $save_data->residence_state      = $request->
+                                               input('residence_state');
+            $save_data->residence_pincode    = $request->
+                                               input('residence_pincode');
+            $save_data->residence_contact_no = $request->
+                                               input('residence_contact_no');
+            $save_data->residence_fax_no     = $request->
+                                               input('residence_fax_no');
 
             $save_data->save();
         }//end if

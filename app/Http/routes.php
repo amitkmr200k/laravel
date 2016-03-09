@@ -4,7 +4,6 @@ Route::group(
     ['middleware' => ['web']],
     function ()
     {
-
         Route::auth();
         Route::get('/home', 'HomeController@index');
         Route::get('/', 'IsguestController@is_guest')->middleware('is_active');
@@ -12,7 +11,10 @@ Route::group(
         // Does not require login.
         Route::get('registration', 'RegistrationController@view_registration');
         Route::post('registration', 'RegistrationController@save_registration');
-        Route::get('activate', 'ActivationController@is_activate');
+        Route::get('activate/{activation_code}',[
+                    'as' => 'activate',
+                    'uses' => 'ActivationController@is_active'
+                    ]);
         Route::post(
                     'check_email_registration',
                     'RegistrationController@check_email'

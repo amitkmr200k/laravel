@@ -41,9 +41,13 @@ class AdminAssignPrivilegeController extends Controller
         $id        = $request->input('id');
         $length    = strlen($role_id);
         $find_role = strpos($role_id, 'role');
-        $role_id   = (int) substr($role_id, ($find_role + 4), ($length - $find_role - 4));
+        $role_id   = (int) substr(
+            $role_id,
+            ($find_role + 4),
+            ($length - $find_role - 4)
+        );
 
-        DB::table('manage_privileges')->where('role_id', $role_id)->delete();
+        ManagePrivilege::where('role_id', $role_id)->delete();
 
         if (!empty($id))
         {
@@ -51,20 +55,31 @@ class AdminAssignPrivilegeController extends Controller
             {
                 $resource_action['ids'] = $value;
                 $length                 = strlen($resource_action['ids']);
-                $find_action            = strpos($resource_action['ids'], 'action');
-                // Description -- substr(string,starting position,length of substing to be extracted).
-                $resource_id = (int) substr($resource_action['ids'], 8, ($find_action - 8));
-                $action_id   = (int) substr($resource_action['ids'], ($find_action + 6), ($length - $find_action - 6));
-
-                DB::table('manage_privileges')->insert(
-                    [
-                     'role_id'     => $role_id,
-                     'resource_id' => $resource_id,
-                     'action_id'   => $action_id,
-                    ]
+                $find_action            = strpos(
+                    $resource_action['ids'],
+                    'action'
                 );
-            }
-        }
+                // Description -- substr(string,starting position,length of substing to be extracted).
+                $resource_id = (int) substr(
+                    $resource_action['ids'],
+                    8,
+                    ($find_action - 8)
+                );
+                $action_id   = (int) substr(
+                    $resource_action['ids'],
+                    ($find_action + 6),
+                    ($length - $find_action - 6)
+                );
+
+                $insert_data = new ManagePrivilege;
+
+                $insert_data->role_id     = $role_id;
+                $insert_data->resource_id = $resource_id;
+                $insert_data->action_id   = $action_id;
+
+                $insert_data->save();
+            }//end foreach
+        }//end if
 
         $message = ['success' => 'true'];
         return response()->json($message);

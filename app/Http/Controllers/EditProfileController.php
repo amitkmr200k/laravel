@@ -15,7 +15,6 @@ class EditProfileController extends Controller
 
     public function view_edit_profile()
     {
-        
         $user = Auth::user();
         return response()->view('edit_profile', $user);
 
@@ -67,22 +66,28 @@ class EditProfileController extends Controller
         $save_data->residence_street     = $request->input('residence_street');
         $save_data->residence_city       = $request->input('residence_city');
         $save_data->residence_state      = $request->input('residence_state');
-        $save_data->residence_pincode    = $request->input('residence_pincode');
-        $save_data->residence_contact_no = $request->input('residence_contact_no');
+        $save_data->residence_pincode    = $request->
+                                           input('residence_pincode');
+        $save_data->residence_contact_no = $request->
+                                           input('residence_contact_no');
         $save_data->residence_fax_no     = $request->input('residence_fax_no');
         // Permanent Address details.
         $save_data->permanent_street     = $request->input('permanent_street');
         $save_data->permanent_city       = $request->input('permanent_city');
         $save_data->permanent_state      = $request->input('permanent_state');
-        $save_data->permanent_pincode    = $request->input('permanent_pincode');
-        $save_data->permanent_contact_no = $request->input('permanent_contact_no');
+        $save_data->permanent_pincode    = $request->
+                                           input('permanent_pincode');
+        $save_data->permanent_contact_no = $request->
+                                           input('permanent_contact_no');
         $save_data->permanent_fax_no     = $request->input('permanent_fax_no');
         $save_data->comment              = $request->input('comment');
 
         if ($request->file('image'))
         {
             $image_temp_name = $request->file('image')->getPathname();
-            $image_name      = $request->file('image')->getClientOriginalName();
+            $image_name      = $request
+                               ->file('image')
+                               ->getClientOriginalName();
             $path            = base_path() . '/public/img/';
             $request->file('image')->move($path, $image_name);
             $save_data->image = $image_name;
@@ -92,31 +97,33 @@ class EditProfileController extends Controller
 
         $msg = ['updated' => 1];
 
-        return redirect('edit_profile')->with('message', 'Profile Updated !!!');
+        return redirect('edit_profile')
+               ->with('message', 'Profile Updated !!!');
 
     }//end save_edit_profile()
 
 
     public function check_email(Request $request)
     {
-        $email_to_check = $request->input('email_id');
-        $email_of_auth_user = Auth::user()->email;
-        $email_already_exists = users::where('email',$email_to_check)->count();
+        $email_to_check       = $request->input('email_id');
+        $email_of_auth_user   = Auth::user()->email;
+        $email_already_exists = 
+                            users::where('email', $email_to_check)->count();
 
         if ($email_of_auth_user !== $email_to_check)
         {
-            if(1 === $email_already_exists)
+            if (1 === $email_already_exists)
             {
-                $error['email_id'] = "1";   
+                $error['email_id'] = '1';
             }
             else
             {
-                $error['email_id'] = "0";
+                $error['email_id'] = '0';
             }
         }
         else
         {
-            $error['email_id'] = "0";
+            $error['email_id'] = '0';
         }
 
         return response()->json($error);
