@@ -13,7 +13,7 @@ Route::group(
         Route::post('registration', 'RegistrationController@save_registration');
         Route::get('activate/{activation_code}',[
                     'as' => 'activate',
-                    'uses' => 'ActivationController@is_active'
+                    'uses' => 'ActivationController@activate_account'
                     ]);
         Route::post(
                     'check_email_registration',

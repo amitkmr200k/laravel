@@ -1,30 +1,35 @@
-$(document).ready(function()
+$(document).ready(function ()
 {
-$('#user_info').hide();
+    $('#loader').hide();
+    $('#user_info').hide();
+
     $('#user').click(function ()
     {
         $('#user_info').slideDown('slow');
         $('#display_message').text('');
-         var user_name_selected = $('#user option:selected').attr('name');
-        
+
+        var user_name_selected = $('#user option:selected').attr('name');
         var data               = $('#hidden_user_info').attr('value');
         var display            = JSON.parse(data);
         var length             = display.length;
         var i                  = 0;
         show_detail            = '';
-        // console.log(length);
+
         while (i < length)
         {
             match_user_name = display[i].user_name;
 
             if (user_name_selected === match_user_name)
             {
-                show_name = display[i].first_name + ' '
+                show_name  = display[i].first_name + ' '
                 + display[i].middle_name + ' ' + display[i].last_name;
                 show_email = display[i].email;
+                
                 $('#name_assign_role_page').val(show_name);
                 $('#email_assign_role_page').val(show_email);
+                
                 role_select = 'role_' + display[i].role_id;
+                
                 $('#role option[id="' + role_select + '"]').prop('selected', true);
             }
 
@@ -32,20 +37,24 @@ $('#user_info').hide();
         }
     });
 
-    $('#role').change(function (){
+    $('#role').change(function ()
+    {
         $('#display_message').text('');
     });
 
-    $('#assign_role').click(function (){
+    $('#assign_role').click(function ()
+    {
         var user_name_selected = $('#user option:selected').attr('id');
         var role_selected      = $("#role option:selected").attr('id');
-        console.log(user_name_selected);
-        if('undefined' === typeof(user_name_selected))
+
+        if ('undefined' === typeof(user_name_selected))
         {
             $('#display_message').text('User not selected').css('color','red');
         }
         else
         {
+            $('#loader').show();
+
             $.ajax
             ({
                 method: 'POST',
@@ -58,7 +67,6 @@ $('#user_info').hide();
                 },
                 success: function ( msg )
                 {
-                    console.log('pass');
                     // Reloading a section of the page.
                     $('#reload_hidden_user_info').load("admin_assign_role #hidden_user_info");
 
@@ -67,13 +75,14 @@ $('#user_info').hide();
                         $('#display_message').text('New Role assigned !!!').css('color','red');
                         $('#role option[id="' + role_selected + '"]').attr('selected', true);
                     }
-                     
+
+                    $('#loader').hide();
                 },
-                error: function()
+                error: function ()
                 {
                     console.log('fail');
                 }
             });
-        }
+        }//end if
     });
 });

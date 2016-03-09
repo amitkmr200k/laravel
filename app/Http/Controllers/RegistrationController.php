@@ -113,7 +113,7 @@ class RegistrationController extends Controller
         $msg = ['registered' => 1];
 
         Mail::queue(
-            'test_email',
+            'send_activation_link',
             [
              'name' => $request->input('first_name'),
              'code' => $activation_code,

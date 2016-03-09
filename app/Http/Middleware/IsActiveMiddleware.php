@@ -21,7 +21,7 @@ class IsActiveMiddleware
     {
         if (Auth::check())
         {
-            if (Auth::user()->is_active === true)
+            if (Auth::user()->is_active == true)
             {
                 return $next($request);
             }

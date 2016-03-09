@@ -13,7 +13,7 @@ class ActivationController extends Controller
 {
 
 
-    public function is_active($check_activation_code)
+    public function activate_account($check_activation_code)
     {
         $user = users::where('activation_code', $check_activation_code)->first();
 

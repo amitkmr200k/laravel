@@ -117,9 +117,11 @@
             </div>
            <div class="col-sm-4"><b>Marital Status</b> <br/>
                 <select name="marital_status" class="btn btn-primary">
-                    <option value="married" {{ $marital_status['married'] }}>
+                    <option value="married"
+                    {{ $marital_status['married'] }}>
                     Married</option>
-                    <option value="unmarried" {{ $marital_status['unmarried'] }}>
+                    <option value="unmarried"
+                    {{ $marital_status['unmarried'] }}>
                     Unmarried </option>
                 </select>
             </div>
@@ -150,7 +152,8 @@
                 </div>
                 <br/><br/><br/>
                 <div class="col-sm-4"><b>Street</b> <br/>
-                    <input class="form-control" id="residence_street" type="text"
+                    <input class="form-control" id="residence_street"
+                    type="text"
                     value="{{ display_value(
                     old('residence_street'), $residence_street) }}"
                     name="residence_street">
@@ -162,14 +165,21 @@
                     name="residence_city">
                 </div>
                 <div class="col-sm-4"><b>State</b> <br/>
-                    <input class="form-control" id="residence_state" type="text"
+                    <input class="form-control" id="residence_state"
+                    type="text"
                     value="{{ display_value(
                     old('residence_state'), $residence_state) }}"
                     name="residence_state">
                 </div>
-                <div class="col-xs-4"><p id="resi_street" class="error"></p></div>
-                <div class="col-xs-4"><p id="resi_city" class="error"></p></div>
-                <div class="col-xs-4"><p id="resi_state" class="error"></p></div>
+                <div class="col-xs-4">
+                    <p id="resi_street" class="error"></p>
+                </div>
+                <div class="col-xs-4">
+                    <p id="resi_city" class="error"></p>
+                </div>
+                <div class="col-xs-4">
+                    <p id="resi_state" class="error"></p>
+                </div>
             </div>
             <div class="row">   
                 <div class="col-sm-4"><b>Pin Code</b><br/>

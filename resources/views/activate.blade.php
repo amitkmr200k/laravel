@@ -10,5 +10,4 @@
     <p> Activation link has been sent to you, please check your email</p>
     </div>
 @endif
-
 @stop

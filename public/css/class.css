@@ -1,21 +1,28 @@
-body {
-            font-family: 'lato';
-        }
+.carousel-inner
+{
+  width: auto !important;
+  height: 150px !important;
+}
+body
+{
+    font-family: 'lato';
+}
 
-        .fa-btn {
-            margin-right: 6px;
-        }
+.fa-btn 
+{
+    margin-right: 6px;
+}
 
-    
-.loading_page {
-position: fixed;
-left: 0px;
-top: 0px;
-width: 100%;
-height: 100%;
-z-index: 10000;
-background: url('../img/loading.gif') no-repeat center center;
-display:none;
+.loading_page 
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: url('../img/loading.gif') no-repeat center center;
+    display:none;
 }
 .registration
 {
@@ -30,13 +37,10 @@ display:none;
     margin-right: 90px;
 }
 
-
-
 .form-control
 {
     width: 80%;
 }
-
 
 .form_password
 {

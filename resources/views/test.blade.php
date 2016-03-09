@@ -13,5 +13,4 @@
 <p id="print"></p>
 <p id="print_1"></p>
 </div>
-
 @stop

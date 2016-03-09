@@ -18,5 +18,4 @@
 <a href="#">{{$value}}</a>&nbsp;&nbsp;
 @endforeach
 </div>
-
 @stop

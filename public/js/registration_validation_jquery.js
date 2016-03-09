@@ -298,7 +298,7 @@ var error_client =new Array();
     }   
     if(flag==0)
     {
-        $("#fname").text(error_client[0]);
+        $("#fname").text(error_client[0]).focus();
         $('#mname').text(error_client[1]);
         $('#lname').text(error_client[2]);
         if($('#uname').text()!="already exits")
