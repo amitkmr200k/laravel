@@ -1,8 +1,18 @@
+h1
+{
+    word-wrap: break-word;
+}
+.glyphicon
+{
+     word-spacing: -10px;
+}
+
 .carousel-inner
 {
   width: auto !important;
   height: 150px !important;
 }
+
 body
 {
     font-family: 'lato';

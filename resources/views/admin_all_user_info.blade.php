@@ -7,8 +7,10 @@
 <div id="loading_message" class="loading_page"> </div>
 <div class="admin">
     <div class="well admin_user_info"><h2> Welcome Admin </h2></div>
+     <div class="table-responsive">
     <table id="grid"></table>
     <div id="perpage"></div><br/>
+    </div>
 </div>
 <div class="well">
     <p id="test"> </p>

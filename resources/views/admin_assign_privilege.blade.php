@@ -23,8 +23,8 @@
             @endforeach
         </select>
         <label id="display_message"></label>
-        <div id="show_data">
-            <table class="table-responsive">
+        <div id="show_data" class="table-responsive">
+            <table >
                 <tbody>
                     @foreach ($resources_table as $value)
                     {{--*/ $val = $value['resource'] /*--}}

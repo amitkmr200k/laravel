@@ -98,7 +98,7 @@ class EditProfileController extends Controller
         $msg = ['updated' => 1];
 
         return redirect('edit_profile')
-               ->with('message', 'Profile Updated !!!');
+               ->with('message', 'Profile Updated');
 
     }//end save_edit_profile()
 

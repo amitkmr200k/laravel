@@ -58,13 +58,21 @@
 @endif
 
 <div class="well registration">
-    <h1> Edit Profile </h1>
-    <h5><font color="red">
-    {{ session_value('message') }}
-    </font>
-    </h5>
+    <div class="row">
+        <div><h1> Edit Profile </h1></div>
+    </div>
+    <div class="row">
+    <h4>
+        @if(session_value('message'))
+        <div class="col-sm-3 alert alert-success" role="alert">
+                {{ session_value('message') }}
+            <span class="glyphicon glyphicon-saved">
+            </span>
+        </div>
+        @endif
+        </h4>
+    </div>
 </div>
-
 <div class="form well">
     <!-- Form going to insert_data page-->
     <form id="edit_profile_form" action="edit_profile"
@@ -90,7 +98,9 @@
             <div class="col-xs-4"><p id="lname" class="error"></p></div>
         </div>
         <div class="row">
-            <div class="col-sm-4"><b>email id </b><br/>
+            <div class="col-sm-4"><b>
+            <span class="glyphicon glyphicon-envelope">
+            Email id </span></b><br/>
                 <input class="form-control" id="email_id" type="text"
                 value="{{ display_value(old('email_id'), $email) }}"
                 name="email_id" placeholder="abc@gmail.com">
@@ -100,7 +110,9 @@
                 value="{{ display_value(old('age'), $age) }}"
                 name="age" placeholder="age" maxlength=3>
             </div>
-            <div class="col-sm-4 "><b>Date Of Birth</b> <br/>
+            <div class="col-sm-4 "><b>
+            <span class="glyphicon glyphicon-calendar">
+            Date Of Birth</span></b> <br/>
                 <input class="form-control" id="dob" type="date"
                 value="{{ display_value(old('dob'), $dob) }}" name="dob">
             </div>
@@ -148,7 +160,8 @@
         <div>
             <div class="row">
                 <div class="col-sm-4">
-                    <h4><strong>Residence address</strong></h4>
+                    <h4><strong><span class="glyphicon glyphicon-home"> 
+                    Residence address</span></strong></h4>
                 </div>
                 <br/><br/><br/>
                 <div class="col-sm-4"><b>Street</b> <br/>
@@ -285,7 +298,7 @@
             </div>
             <div class="col-sm-4">
                 <input class="btn btn-primary" id="edit"  type="submit" 
-                value="Edit Profile" name="submit">
+                value="Update Profile" name="submit">
             </div>
             <div class="col-sm-4">
                 <input id="image_input" type="file" value="image" name="image"
