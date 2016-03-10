@@ -51,7 +51,6 @@ class EditProfileController extends Controller
         );
 
         $save_data = Users::find(Auth::user()->id);
-
         $save_data->first_name     = $request->input('first_name');
         $save_data->middle_name    = $request->input('middle_name');
         $save_data->last_name      = $request->input('last_name');
@@ -94,7 +93,7 @@ class EditProfileController extends Controller
         }
 
         $save_data->save();
-
+        
         $msg = ['updated' => 1];
 
         return redirect('edit_profile')
