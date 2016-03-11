@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Model\users;
 use Auth;
+use Exception;
+use Log;
 
 class EditProfileController extends Controller
 {
@@ -50,50 +52,74 @@ class EditProfileController extends Controller
             ]
         );
 
-        $save_data = Users::find(Auth::user()->id);
-        $save_data->first_name     = $request->input('first_name');
-        $save_data->middle_name    = $request->input('middle_name');
-        $save_data->last_name      = $request->input('last_name');
-        $save_data->email          = $request->input('email_id');
-        $save_data->age            = $request->input('age');
-        $save_data->dob            = $request->input('dob');
-        $save_data->gender         = $request->input('gender');
-        $save_data->marital_status = $request->input('marital_status');
-        $save_data->employment     = $request->input('employment');
-        $save_data->employer       = $request->input('employer');
-        // Residence Address details.
-        $save_data->residence_street     = $request->input('residence_street');
-        $save_data->residence_city       = $request->input('residence_city');
-        $save_data->residence_state      = $request->input('residence_state');
-        $save_data->residence_pincode    = $request->
-                                           input('residence_pincode');
-        $save_data->residence_contact_no = $request->
-                                           input('residence_contact_no');
-        $save_data->residence_fax_no     = $request->input('residence_fax_no');
-        // Permanent Address details.
-        $save_data->permanent_street     = $request->input('permanent_street');
-        $save_data->permanent_city       = $request->input('permanent_city');
-        $save_data->permanent_state      = $request->input('permanent_state');
-        $save_data->permanent_pincode    = $request->
-                                           input('permanent_pincode');
-        $save_data->permanent_contact_no = $request->
-                                           input('permanent_contact_no');
-        $save_data->permanent_fax_no     = $request->input('permanent_fax_no');
-        $save_data->comment              = $request->input('comment');
-
-        if ($request->file('image'))
+        try
         {
-            $image_temp_name = $request->file('image')->getPathname();
-            $image_name      = $request
-                               ->file('image')
-                               ->getClientOriginalName();
-            $path            = base_path() . '/public/img/';
-            $request->file('image')->move($path, $image_name);
-            $save_data->image = $image_name;
-        }
+            $save_data = Users::find(Auth::user()->id);
 
-        $save_data->save();
-        
+            $save_data->first_name     = $request->input('first_name');
+            $save_data->middle_name    = $request->input('middle_name');
+            $save_data->last_name      = $request->input('last_name');
+            $save_data->email          = $request->input('email_id');
+            $save_data->age            = $request->input('age');
+            $save_data->dob            = $request->input('dob');
+            $save_data->gender         = $request->input('gender');
+            $save_data->marital_status = $request->input('marital_status');
+            $save_data->employment     = $request->input('employment');
+            $save_data->employer       = $request->input('employer');
+            // Residence Address details.
+            $save_data->residence_street     = $request
+                ->input('residence_street');
+            $save_data->residence_city       = $request
+                ->input('residence_city');
+            $save_data->residence_state      = $request
+                ->input('residence_state');
+            $save_data->residence_pincode    = $request
+                ->input('residence_pincode');
+            $save_data->residence_contact_no = $request
+                ->input('residence_contact_no');
+            $save_data->residence_fax_no     = $request
+                ->input('residence_fax_no');
+            // Permanent Address details.
+            $save_data->permanent_street     = $request
+                ->input('permanent_street');
+            $save_data->permanent_city       = $request
+                ->input('permanent_city');
+            $save_data->permanent_state      = $request
+                ->input('permanent_state');
+            $save_data->permanent_pincode    = $request
+                ->input('permanent_pincode');
+            $save_data->permanent_contact_no = $request
+                ->input('permanent_contact_no');
+            $save_data->permanent_fax_no     = $request
+                ->input('permanent_fax_no');
+            $save_data->comment              = $request->input('comment');
+
+            if ($request->file('image'))
+            {
+                $image_temp_name = $request->file('image')->getPathname();
+                $image_name      = $request
+                    ->file('image')
+                    ->getClientOriginalName();
+                $path            = base_path() . '/public/img/';
+                $request->file('image')->move($path, $image_name);
+                $save_data->image = $image_name;
+            }
+
+            $save_data->save();
+        }
+        catch (Exception $e)
+        {
+            Log::info(
+                'custom_error_message',
+                ['error_save_home_page' => $e->getMessage()]
+            );
+
+            return redirect('edit_profile')->with(
+                'catch_error',
+                'Oops Something went wrong, please try again'
+            );
+        }//end try
+
         $msg = ['updated' => 1];
 
         return redirect('edit_profile')
@@ -106,7 +132,7 @@ class EditProfileController extends Controller
     {
         $email_to_check       = $request->input('email_id');
         $email_of_auth_user   = Auth::user()->email;
-        $email_already_exists = 
+        $email_already_exists =
                             users::where('email', $email_to_check)->count();
 
         if ($email_of_auth_user !== $email_to_check)

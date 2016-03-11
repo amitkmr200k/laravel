@@ -70,6 +70,13 @@
             </span>
         </div>
         @endif
+        @if(session_value('catch_error'))
+        <div class="col-sm-8 alert alert-danger" role="alert">
+                {{ session_value('catch_error') }}
+            <span class="glyphicon glyphicon-saved">
+            </span>
+        </div>
+        @endif
         </h4>
     </div>
 </div>
@@ -297,7 +304,7 @@
                 old('comment'), $comment) }}</textarea>
             </div>
             <div class="col-sm-4">
-                <input class="btn btn-primary" id="edit"  type="submit" 
+                <input class="btn btn-success form-control" id="edit"  type="submit" 
                 value="Update Profile" name="submit">
             </div>
             <div class="col-sm-4">

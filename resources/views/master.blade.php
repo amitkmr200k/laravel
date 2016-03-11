@@ -32,7 +32,7 @@
     <div class="brand">Mindfire Solutions</div>
     <div class="address-bar">BHUBANESWAR | ODISHA | 751010</div>
     
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default ">
         <div class="container">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
@@ -138,7 +138,6 @@
 <script type="text/javascript" src="js/image_preview.js"></script>
 <script type="text/javascript" src="js/same_permanent.js?version=123"></script>
 <script type="text/javascript" src="js/date.js?version=13"></script>
-<script type="text/javascript" src="js/test.js?version=13"></script>
 @yield('script')
 </body>
 </html>

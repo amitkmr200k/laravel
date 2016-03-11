@@ -1,4 +1,4 @@
-h1
+h1,h2
 {
     word-wrap: break-word;
 }
@@ -72,7 +72,6 @@ body
 {
     background-color: #CAE1FF;
     margin-right: 4%;
-    
 }
 .reset_form
 {
@@ -194,4 +193,10 @@ body
     margin-left: 30%;
     margin-right: 30%;
     text-align: center;
+}
+
+#edit
+{
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
