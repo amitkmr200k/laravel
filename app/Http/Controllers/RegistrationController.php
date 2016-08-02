@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+ini_set('xdebug.max_nesting_level', 200);
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

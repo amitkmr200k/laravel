@@ -15,6 +15,7 @@ class TwitterController extends Controller
     {
         $user_name = $request->input('user_name');
 
+        dd(1);
         $string = Twitter::getUserTimeline(
             [
              'screen_name' => $user_name,

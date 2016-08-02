@@ -33,7 +33,7 @@
 </div>
 
 <div class="form well">
-    <form id="registration_form" action="registration" 
+    <form id="registration_form" action="registration"
     enctype="multipart/form-data" method="POST" >
     <div class="row">
         <div class="col-sm-4"><b>First name</b> <br/>
@@ -49,7 +49,7 @@
         <div class="col-sm-4"><b>Last name </b><br/>
             <input class="form-control" id="last_name" type="text"
             value="{{ old('last_name') }}" name="last_name"
-            placeholder="Last Name"> 
+            placeholder="Last Name">
         </div>
         <div class="col-xs-4"><p id="fname" class="error"></p></div>
         <div class="col-xs-4"><p id="mname" class="error"></p></div>
@@ -92,10 +92,10 @@
         <div class="col-xsas-4"><p id="dob_error" class="error"></p></div>
     </div>
         <div class="row">
-        <div class="col-sm-4 "><b>Gender</b> <br/> 
-            <input type="radio" name="gender" value="male"  
+        <div class="col-sm-4 "><b>Gender</b> <br/>
+            <input type="radio" name="gender" value="male"
             {{ $gender['male'] }}> Male<br>
-            <input type="radio" name="gender" value="female" 
+            <input type="radio" name="gender" value="female"
             {{ $gender['female'] }}> Female<br>
         </div>
         <div class="col-sm-4"><b>Marital Status</b> <br/>
@@ -146,7 +146,7 @@
         <div class="col-xs-4"><p id="resi_city" class="error"></p></div>
         <div class="col-xs-4"><p id="resi_state" class="error"></p></div>
     </div>
-    <div class="row">   
+    <div class="row">
         <div class="col-sm-4"><b>Pin Code</b> <br/>
             <input class="form-control" id="residence_pincode" type="text"
             value="{{ old('residence_pincode') }}" name="residence_pincode"
@@ -167,7 +167,7 @@
         <div class="col-xs-4"><p id="resi_fax" class="error"></p></div>
     </div>
     <!-- Permanent Address-->
-    <div class="row">           
+    <div class="row">
         <div class="col-sm-4"><h4><strong>Permanent address</strong>
             <span><input type="checkbox" id ="copy_residence"></span></h4>
         </div>
@@ -189,7 +189,7 @@
         <div class="col-xs-4"><p id="perm_city" class="error"></p></div>
         <div class="col-xs-4"><p id="perm_state" class="error"></p></div>
     </div>
-    <div class="row">   
+    <div class="row">
         <div class="col-sm-4"><b>Pin Code</b> <br/>
             <input class="form-control" id="permanent_pincode" type="text"
             value="{{ old('permanent_pincode') }}" name="permanent_pincode"
