@@ -203,6 +203,7 @@ function modal(a)
                 error: function ()
                 {
                     console.log('fail');
+                    $('#loading_message').hide();
                 }
 
             });
