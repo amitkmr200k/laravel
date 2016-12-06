@@ -11,6 +11,17 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\Model\users::class, 1)->create();
+        DB::table('users')->insert([
+            'user_name' => 'amitkmr200k',
+            'first_name' => 'Amit',
+            'last_name' => 'Kumar',
+            'is_admin' => '1',
+            'is_active' => '1',
+            'role_id' => '3',
+            'email' => 'amitkmr200k@gmail.com',
+            'password' => bcrypt('mindfire'),
+        ]);
+
+    	//factory(App\Model\users::class, 1)->create();
     }
 }
